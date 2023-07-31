@@ -1,0 +1,410 @@
+openapi: 3.0.1
+info:
+  title: Bank Argent API documentation
+  description: Contains all available API endpoints in this codebase of Stephane
+  termsOfService: http://swagger.io/terms/
+  version: 1.0.0
+servers:
+- url: http://localhost:3001/api/v1
+paths:
+  /user/login:
+    post:
+      tags:
+      - User Sign
+      summary: Login
+      description: API for Login
+      requestBody:
+        description: Login Payload
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        200:
+          description: Login Successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: body
+  /user/signup:
+    post:
+      tags:
+      - User Sign
+      summary: Signup
+      description: API for Signup
+      requestBody:
+        description: Signup Payload
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        200:
+          description: Signup Successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: body
+  /user/logout:
+    get:
+      tags:
+      - User Sign
+      summary: Log out
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /user/profile:
+    put:
+      tags:
+      - User Profile
+      summary: User Profile API
+      description: API for updating a user profile
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        schema: {}
+      requestBody:
+        description: Update user profile attributes
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+        required: true
+      responses:
+        200:
+          description: User profile retrieved successully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+      x-codegen-request-body-name: body
+    post:
+      tags:
+      - User Profile
+      summary: User Profile API
+      description: API for fetching a user profile
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        schema: {}
+      responses:
+        200:
+          description: User profile retrieved successully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+  /user/delete:
+    delete:
+      tags:
+      - User Profile
+      summary: Delete Profile API
+      description: API for deleting a user profile
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        schema: {}
+      responses:
+        200:
+          description: User account deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+  /user/account:
+    post:
+      tags:
+      - User Account
+      summary: Create Account
+      description: API for creating a new bank account
+      requestBody:
+        description: Account creation payload
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Account'
+        required: true
+      responses:
+        200:
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+      x-codegen-request-body-name: body
+  /user/account/{accountId}:
+    delete:
+      tags:
+      - User Account
+      summary: Delete Account
+      description: API for deleting a bank account
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of the account to be deleted
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Account deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+  /user/transactions:
+    get:
+      tags:
+      - User Transactions
+      summary: Get User Transactions
+      description: API for fetching a user's transactions for the current month
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        schema: {}
+      responses:
+        200:
+          description: User transactions retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+  /user/transactions/{transactionId}:
+    get:
+      tags:
+      - User Transactions
+      summary: Get Transaction Details
+      description: API for fetching details of a specific transaction
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        schema: {}
+      - name: transactionId
+        in: path
+        description: ID of the transaction
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Transaction details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - User Transactions
+      summary: Update Transaction Details
+      description: API for updating details of a specific transaction
+      parameters:
+      - name: Authorization
+        in: header
+        description: Attach Bearer JWT token
+        required: true
+        schema: {}
+      - name: transactionId
+        in: path
+        description: ID of the transaction
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Transaction update payload
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/TransactionUpdate'
+        required: true
+      responses:
+        200:
+          description: Transaction details updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        400:
+          description: Invalid Fields
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user email
+        password:
+          type: string
+          description: user password
+        firstName:
+          type: string
+          description: user first name
+        lastName:
+          type: string
+          description: user last name
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user email
+        password:
+          type: string
+          description: user password
+    ApiResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        body:
+          type: object
+          properties:
+            id:
+              type: string
+            email:
+              type: string
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    UserProfile:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+    AccountCreate:
+      type: object
+      properties:
+        accountType:
+          type: string
+          description: The type of the account to be created
+          example: current account, saving account, term account, investement account
+            ...
+        initialBalance:
+          type: number
+          description: The initial balance of the account
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+          format: date-time
+        amount:
+          type: number
+          format: double
+          example: 34434.43
+        description:
+          type: string
+    TransactionUpdate:
+      type: object
+      properties:
+        Category:
+          type: string
+          description: Category of the transaction
+          example: food, house, sport, school...
+        Note:
+          type: string
+          description: Note for the transaction
+          example: new year eve party, paint it black, kettelbel, furnitures ...
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

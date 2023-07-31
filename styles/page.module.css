@@ -1,0 +1,414 @@
+.main {
+  flex: 1;
+  height: calc(100vh - 165px);
+  padding-top: 3rem;
+}
+.mainUser {
+  flex: 1;
+  height: calc(100vh - 165px);
+  margin-top: 3rem;
+}
+.bgDark {
+	background-color: #12002b;
+}
+.srOnly {
+	display: none;
+}
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important; /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important; /* 3 */
+}
+
+.mainNav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 20px;
+}
+
+.mainNav a {
+	font-weight: bold;
+	color: #2c3e50;
+}
+
+.mainNav a.router-link-exact-active {
+	color: #42b983;
+}
+
+.mainNavItemOut {
+	text-decoration: none;
+	margin-right: 0.5rem;
+	align-items: center;
+	display: flex;
+	width: 90px;
+	justify-content: space-between;
+}
+.navName {
+	width: 60px;
+	margin-right: 30px;
+}
+
+.mainNavItemIn {
+	text-decoration: none;
+	margin-right: 0.5rem;
+	align-items: center;
+	display: flex;
+	width: 75px;
+	justify-content: space-between;
+}
+
+.mainNavItem:hover {
+	text-decoration: underline;
+}
+
+.mainNavLogo {
+	display: flex;
+	align-items: center;
+}
+
+.mainNavLogoImage {
+	max-width: 100%;
+	width: 200px;
+}
+
+.hero {
+	background-image: url("../public/img/bank-tree.jpeg");
+	background-position: 0 -50px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 300px;
+	position: relative;
+}
+
+.heroContent {
+	position: relative;
+	top: 2rem;
+	width: 200px;
+	background: white;
+	padding: 2rem;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.heroContent .subtitle {
+	font-weight: bold;
+	font-size: 1rem;
+	margin: 0;
+}
+
+.heroContent .text {
+	margin-bottom: 0;
+	font-size: 0.9rem;
+}
+
+@media (min-width: 920px) {
+	.hero {
+		height: 400px;
+		background-position: 0% 33%;
+	}
+
+	.heroContent {
+		position: absolute;
+		top: 50px;
+		right: 50px;
+		width: 300px;
+		margin: 2rem;
+	}
+
+	.heroContent .subtitle {
+		font-size: 1.5rem;
+	}
+
+	.heroContent .text {
+		font-size: 1.2rem;
+	}
+}
+
+.features {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (min-width: 920px) {
+	.features {
+		flex-direction: row;
+	}
+}
+
+.featureIcon {
+	width: 100px;
+	border: 10px solid #00bc77;
+	border-radius: 50%;
+	padding: 1rem;
+}
+
+.featureItem {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 2.5rem;
+	justify-content: center;
+}
+
+.featureItemTitle {
+	color: #222;
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}  
+.featureItem img {
+	
+	margin: auto;
+}
+
+/* SIGN IN */
+.signIn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.signInButton {
+	display: block;
+	padding: 8px;
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin-top: 1rem;
+	border-color: #00bc77;
+	background-color: #00bc77;
+	color: #fff;
+}
+
+.signInContent {
+	box-sizing: border-box;
+	background-color: white;
+	width: 300px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+.signInHeadCard {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.centerH1 {
+	margin-left: auto;
+	margin-right: auto;
+}
+/* INPUT */
+.inputRemember {
+	display: flex;
+}
+
+.inputRemember label {
+	margin-left: 0.25rem;
+}
+
+.inputWrapper {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	margin-bottom: 1rem;
+}
+
+.inputWrapper label {
+	font-weight: bold;
+}
+
+.inputWrapper input {
+	padding: 5px;
+	font-size: 1.2rem;
+}
+/* FOOTER */
+.footer {
+	display: flex;
+	justify-content: center;
+	border-top: 2px solid #ccc;
+	padding: 2rem 0 1.5rem;
+}
+
+.footerText {
+	margin: 0;
+	padding: 0;
+}
+/* ACCOUNT */
+.account {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid black;
+	background-color: #fff;
+	width: 80%;
+	margin: 0 auto;
+	flex-direction: column;
+	padding: 1.5rem;
+	box-sizing: border-box;
+	text-align: left;
+	margin-bottom: 2rem;
+}
+
+.accountAmount {
+	margin: 0;
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+.accountAmountDescription {
+	margin: 0;
+}
+
+.accountTitle {
+	margin: 0;
+	padding: 0;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+.accountContentWrapper {
+	width: 100%;
+	flex: 1;
+}
+
+.editButton {
+	border-color: #00bc77;
+	background-color: #00bc77;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.header {
+	color: #fff;
+	margin-bottom: 2rem;
+}
+/* BUTTONS */
+.transactionButton {
+	display: block;
+	width: 100%;
+	padding: 8px;
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin-top: 1rem;
+	border-color: #00bc77;
+	background-color: #00bc77;
+	color: #fff;
+	border-radius: 3px;
+}
+
+
+@media (min-width: 720px) {
+	.account {
+		flex-direction: row;
+	}
+
+	.accountContentWrapper.cta {
+		flex: 0;
+	}
+
+	.transactionButton {
+		width: 200px;
+	}
+}
+
+
+.userH1 {
+  margin-top: -26px;
+}
+
+
+/* USER PAGE */
+.userPage {
+	background-color: lightgrey;	
+}
+.userPageInput {
+	background-color: whitesmoke;
+	color: silver;
+	border: 2px solid silver;
+	border-radius: 5px;
+	margin: 10px;
+}
+.userPageInput:focus {
+	border: 2px solid #00bc77 !important;
+
+}
+.welcomeContainer {
+	margin: 0 auto 20px auto;
+}
+.welcomeH1 {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+
+}
+.userWelcomeButtonS {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
+.usersWelcomeInputAndButton {
+	display: block;
+	margin: auto;
+}
+.usersWelcomeInput {
+	display: flex;
+	justify-content: center;
+}
+.userWelcomeButton {
+	display: flex;
+	justify-content: center;
+	border: 1px solid #00bc77 ;
+	color:#00bc77;
+	border-radius: 3px;
+	margin: 10px auto;
+	width: 100px;
+}
+.saveButton {
+	margin-left: 10px;
+}
+.usersWelcomeSave {
+	display: flex;
+	justify-content: center;
+	width: 250px;
+	margin: auto;
+}
+/* SIGN UP PAGE */
+.signUpContainer {
+	background-color: black;
+	height: 220px;
+	padding:10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	vertical-align: middle;
+	
+}
+.signUpInput {
+	width: 150px;
+	display: flex;
+	margin: auto;
+	height: 30px;
+	line-height: 28px;
+	margin-bottom: 5px;
+}
+.signUpErrorBorder {
+	border-color: red;
+}
+.signUpIcon {
+margin-bottom: 15px;
+color: white;
+}
+.signUpForm {
+	background-color: transparent;
+}
+.signUpButton {
+	color:#00bc77;
+	background-color: white;
+}
