@@ -54,7 +54,7 @@ export default function SignIn() {
 			});
 	};
 
-	useEffect(() => {
+	useEffect(() => {                                      // A chaque fois que Token ou router aura un changement alors ...
 		if (token) {
 			router.push("/user");
 		}
@@ -82,7 +82,7 @@ export default function SignIn() {
 							<label htmlFor="password">Password</label>
 							<input className={error ? styles.signUpErrorBorder : ""} type="password" id="password" value={password} onChange={updatePassword} required />
 						</div>
-						{error && <p className={styles.signUpErrorBorder}>Username or password are incorrect</p>}
+						{error && <p className={styles.signUpErrorBorder}>Username or / and password are incorrect, please retry</p>}
 						<div className={styles.inputRemember}>
 							<input type="checkbox" id="remember-me" />
 							<label htmlFor="remember-me">Remember me</label>

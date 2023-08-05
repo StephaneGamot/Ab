@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = { firstName: "", lastName: "" };      // On créer le state initial (sa valeur de départ)
+const initialState = { firstName: "", lastName: "" };      // On créer le state initial (sa valeur de départ), c'est un objet
 
-export const userReducer = createSlice({
+export const userReducer = createSlice({                   // execution de createSlice avec les caractéristiques demandées
 	name: "user",                                          // je lui donne un nom
 	initialState,
 	reducers: {

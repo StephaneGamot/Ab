@@ -3,6 +3,7 @@ import styles from "../styles/page.module.css";
 import { useState, useEffect } from "react";
 import { setUser } from "../features/userReducer";
 import FetchName from "@/api/fetchName";
+import { useRouter } from "next/router";
 
 export default function Welcome() {
 	const dispatch = useDispatch();                                  // Initialisation du dispatch pour pouvoir envoyer des actions à notre store Redux.
@@ -11,7 +12,7 @@ export default function Welcome() {
 	const lastName = useSelector((state) => state.user.lastName);    // Accès au nom de l'utilisateur dans le store Redux avec 'useSelector'.
 	const [firstNameInput, setFirstNameInput] = useState(firstName); // Création d'un état local pour le prénom de l'utilisateur et sa fonction de modification.
 	const [lastNameInput, setLastNameInput] = useState(lastName);    // Création d'un état local pour le nom de l'utilisateur et sa fonction de modification.
-                                
+	const router = useRouter();                                      // Initialisation de l'objet router qui permet de naviguer entre les pages.                          
 	                                                                 // useEffect met à jour les états locaux 'firstNameInput' et 'lastNameInput'
 	useEffect(() => {                                                // à chaque fois que les valeurs correspondantes dans le store Redux sont modifiées 
 		setFirstNameInput(firstName);
@@ -49,20 +50,21 @@ export default function Welcome() {
 					return;
 				} else {
 					dispatch(                                        // Je 'dispatche' une action à Redux pour mettre à jour l'état du prénom et du nom
-						setUser({
+						setUser({                                    // setUser est l'action creator, une fonction qui retourne une action. 
 							firstName: data.body.firstName,
 							lastName: data.body.lastName,
 						})
 					);
 				}
 			})
+			.then(() => router.refresh())
 			.catch((error) => {                                      // Si il y a une erreur elle sera attapée ici 
 				console.error("Erreur lors de la requête :", error);
 			});
 
 		setIsUserFormShown(false);
 	};
-
+console.log(token);
 	return (
 		<>
 			<section className={styles.welcomeContainer}>
