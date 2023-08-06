@@ -213,25 +213,25 @@ paths:
       security:
       - Bearer: []
   /user/transactions:
-    get:
-      tags:
+    get:                                                             
+      tags:                                                          # Des étiquettes (ou tags) permettant de catégoriser l'endpoint.
       - User Transactions
       summary: Get User Transactions
       description: API for fetching a user's transactions for the current month
-      parameters:                                                    
+      parameters:                                                    # Liste des paramètres requis pour cet endpoint.                                             
       - name: Authorization                                          # Pour transmettre des informations d'authentification.
         in: header                                                   # Il doit être inclus dans les en-têtes de la requête.
         description: Attach Bearer JWT token                         # le token JWT  précédé de la chaîne "Bearer", doit être attaché à l'en-tête "Authorization"
         required: true                                               # Obligatoire
-        schema:                                                      #
-          type: string
-      responses:
+        schema:                                                      
+          type: string                                               # Le token sera une chaine de caractères
+      responses:                                                     # Elle peut renvoyer plusieurs réponses possible
         200:
           description: User transactions retrieved successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/Transaction'             # voir sa référence plus bas. Utilisé pour éviter les répétitions
         400:
           description: Invalid Fields
           content: {}
@@ -239,7 +239,7 @@ paths:
           description: Internal Server Error
           content: {}
       security:
-      - Bearer: []
+      - Bearer: []                                                   # nécessite une autorisation de type Bearer token pour accéder à la ressource
   /user/transactions/{transactionId}:
     get:
       tags:

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";  // J'importe cette fonction qui génére automatiquement les actions et les réducteurs
 
 const initialState = {                           // Je définie le state initial de l'authentification
 	token: null,

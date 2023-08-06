@@ -44,7 +44,7 @@ export default function SignIn() {
 					console.log(data);
 					setError(true);                        // J'affiche une erreur si la connexion échoue
 					return;
-				} else {
+				} else {                                   // Elle va dospatcher une action pour mettre à jour le token dan sle store de Redux et ...
 					dispatch(setAuthToken({ token: data.body.token })); // Si la connexion réussit, on met à jour le token dans le store Redux
 					router.push("/user");                  // Et on redirige vers la page utilisateur
 				}

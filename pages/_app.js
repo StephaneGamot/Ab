@@ -1,4 +1,4 @@
-import { store } from "../store/store";
+import { store } from "../store/store";    // le store est le 'lieu' qui contient toutes les configurations pour Redux
 import { Provider } from "react-redux";
 import { Inter } from "next/font/google";
 import Head from "next/head";

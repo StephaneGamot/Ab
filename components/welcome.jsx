@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/page.module.css";
 import { useState, useEffect } from "react";
-import { setUser } from "../features/userReducer";
+import { user as setUser } from "../features/userReducer";
 import FetchName from "@/api/fetchName";
 import { useRouter } from "next/router";
 
@@ -25,6 +25,12 @@ export default function Welcome() {
 	const toggleUserForm = () => {                                   // Fonction qui permet de basculer l'affichage du formulaire.
 		setIsUserFormShown(!isUserFormShown);
 	};
+	useEffect(() => {
+		if (!token) {                                                // Si le token n'est pas disponible
+			router.push('/');                                        // Redirection vers la page d'accueil
+		}
+	}, []);
+	
 
 	const handleSubmit = (event) => {                                // A la soumission du formulaire.
 		event.preventDefault();
@@ -57,14 +63,13 @@ export default function Welcome() {
 					);
 				}
 			})
-			.then(() => router.refresh())
 			.catch((error) => {                                      // Si il y a une erreur elle sera attapée ici 
 				console.error("Erreur lors de la requête :", error);
 			});
 
 		setIsUserFormShown(false);
 	};
-console.log(token);
+
 	return (
 		<>
 			<section className={styles.welcomeContainer}>
@@ -98,3 +103,6 @@ console.log(token);
 		</>
 	);
 }
+
+
+
